@@ -1,0 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'app/theme/style/_app-variables.less';
+@import 'app/theme/style/_app-base.less';
+@import 'app/theme/style/_app-reset.less';

@@ -1,0 +1,15 @@
+<div class="sw-wrapper-none">
+  <div class="sw-pull-left">
+    <div class="sw-aside">
+      <img src="assets/img/logo.png" />
+      <h3>书店后台管理系统</h3>
+      <sw-aside [data]="mainData.menuData"></sw-aside>
+    </div>
+  </div>
+  <div class="sw-content-container">
+    <div class="sw-header"><h3>{{title}}</h3></div>
+    <div class="sw-content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

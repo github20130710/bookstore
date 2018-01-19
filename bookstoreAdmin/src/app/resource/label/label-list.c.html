@@ -1,0 +1,42 @@
+<div class="c-content-inner">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="c-line-title">{{title}}</p>
+    </div>
+  </div>
+  <div class="btn-toolbar">
+    <button pButton type="button" (click)="refresh()" icon="fa-refresh"></button>
+    <button pButton type="button" (click)="add()" icon="fa fa-plus"></button>
+    <button pButton type="button" (click)="add()" icon="fa fa-pencil"></button>
+    <button pButton type="button" (click)="del()" icon="fa fa-minus"></button>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+
+      <p-dataTable [value]="labels" [paginator]="true" [rows]="20" selectionMode="single" [(selection)]="selectedLabel">
+        <p-column field="id" header="索引"></p-column>
+        <p-column field="name" header="名称"></p-column>
+        <p-column field="enable" header="是否启用"></p-column>
+        <p-column field="createTime" header="创建时间"></p-column>
+      </p-dataTable>
+
+    </div>
+  </div>
+</div>
+
+<p-dialog header="新增" [(visible)]="addDialog.show">
+  <p-header>
+    {{addDialog.title}}
+  </p-header>
+  <form class="form">
+    <div class="form-control">
+      <label class="form-label">名称:</label>
+      <div class="form-group col-lg-9 col-md-9 col-sm-9">
+        <input type="text" pInputText [(ngModel)]="name"/>
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    //buttons
+  </p-footer>
+</p-dialog>
