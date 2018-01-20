@@ -1,8 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlertModule } from 'ngx-bootstrap';
-import { HttpModule }    from '@angular/http';
+import { HttpClientModule, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 
 import { DataTableModule, ButtonModule, DialogModule } from 'primeng/primeng';
 
@@ -23,7 +22,7 @@ import  { AppRoutingModule } from './app-routing.m';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     DataTableModule,
     ButtonModule,
     DialogModule
@@ -33,4 +32,5 @@ import  { AppRoutingModule } from './app-routing.m';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

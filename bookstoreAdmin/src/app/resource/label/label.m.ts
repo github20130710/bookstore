@@ -8,7 +8,7 @@ import { DataTableModule, ButtonModule, DialogModule, InputTextModule } from 'pr
 import { LabelRoutingModule  } from './label-routing.m';
 
 // app
-import { ResourceService } from '../resource.service';
+//import { ResourceService } from '../resource.service';
 import { LabelComponent } from './label.c';
 import { LabelListComponent } from './label-list.c';
 
@@ -31,7 +31,6 @@ import { LabelListComponent } from './label-list.c';
     ],
     exports:      [],
     providers:    [
-      ResourceService
     ]
 })
 
