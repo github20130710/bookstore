@@ -14,17 +14,17 @@
   <div class="row">
     <div class="col-md-12">
 
-      <p-dataTable [value]="labels" [paginator]="true" [rows]="20" selectionMode="single" [(selection)]="selectedItem">
+      <p-dataTable [value]="categories" [paginator]="true" [rows]="20" dataKey="id" sortField="updateTime" selectionMode="single" [(selection)]="selectedItem">
         <p-column field="name" header="名称"></p-column>
         <p-column field="enable" header="是否启用"></p-column>
         <p-column field="createTime" header="创建时间">
-          <ng-template let-col let-label="rowData" pTemplate="body">
-            <span>{{label[col.field] | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+          <ng-template let-col let-category="rowData" pTemplate="body">
+            <span>{{category[col.field] | date:'yyyy-MM-dd HH:mm:ss'}}</span>
           </ng-template>
         </p-column>
         <p-column field="updateTime" header="更新时间">
-          <ng-template let-col let-label="rowData" pTemplate="body">
-            <span>{{label[col.field] | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+          <ng-template let-col let-category="rowData" pTemplate="body">
+            <span>{{category[col.field] | date:'yyyy-MM-dd HH:mm:ss'}}</span>
           </ng-template>
         </p-column>
       </p-dataTable>
@@ -57,8 +57,4 @@
 </p-dialog>
 
 <p-confirmDialog header="删除" icon="fa fa-question-circle" width="425">
-  <!--<p-footer>-->
-    <!--<button type="button" pButton icon="fa-close" label="否" (click)="cd.reject()"></button>-->
-    <!--<button type="button" pButton icon="fa-check" label="是" (click)="cd.accept()"></button>-->
-  <!--</p-footer>-->
 </p-confirmDialog>

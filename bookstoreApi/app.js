@@ -8,7 +8,8 @@ var errorhandler = require('errorhandler');
 
 var index = require('./routes/index'),
     books = require('./routes/books'),
-    labels = require('./routes/labels');
+    labels = require('./routes/labels'),
+    categories = require('./routes/categories');
 
 var app = express();
 
@@ -57,9 +58,15 @@ app.put('/books/book', books.update);
 // -------------label---------------------
 app.get('/labels', labels.list);
 app.get('/labels/id/:id', labels.getOne);
-app.post('/labels/book', labels.add);
+app.post('/labels/label', labels.add);
 app.delete('/labels/id/:id', labels.del);
-app.put('/labels/book', labels.update);
+app.put('/labels/label', labels.update);
+// -------------category---------------------
+app.get('/categories', categories.list);
+app.get('/categories/id/:id', categories.getOne);
+app.post('/categories/category', categories.add);
+app.delete('/categories/id/:id', categories.del);
+app.put('/categories/category', categories.update);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

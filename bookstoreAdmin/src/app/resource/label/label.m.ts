@@ -2,7 +2,8 @@ import { NgModule }   from '@angular/core';
 import { CommonModule }       from '@angular/common';
 import { FormsModule }        from '@angular/forms';
 import { Routes, RouterModule} from "@angular/router";
-import { DataTableModule, ButtonModule, DialogModule, InputTextModule } from 'primeng/primeng';
+import { InputSwitchModule } from 'primeng/primeng';
+import { DataTableModule, ButtonModule, DialogModule, ConfirmDialogModule, GrowlModule, InputTextModule } from 'primeng/primeng';
 
 // routing
 import { LabelRoutingModule  } from './label-routing.m';
@@ -20,9 +21,12 @@ import { LabelListComponent } from './label-list.c';
         CommonModule,
         FormsModule,
         LabelRoutingModule,
+        InputSwitchModule,
         DataTableModule,
         ButtonModule,
         DialogModule,
+        ConfirmDialogModule,
+        GrowlModule,
         InputTextModule
     ],
     declarations: [

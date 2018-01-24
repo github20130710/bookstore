@@ -25,10 +25,16 @@ exports.getOne=function(req,res){
 
 //添加
 exports.add = function(req, res) {
-  labels.findOne({}, {sort: {id: -1}}).then((obj)=>{
-    var book=req.body;
-    book.id=(parseInt(obj.id)+1)+"";
-    labels.insert(book).then((docs) => {
+  labels.findOne({}, {sort: "id"}).then((obj)=>{
+    var label=req.body;
+    if(obj==null){
+      label.id="1";
+    } else {
+      label.id=(parseInt(obj.id)+1)+"";
+    }
+    label.createTime = Date.now();
+    label.updateTime = Date.now();
+    labels.insert(label).then((docs) => {
       res.json(docs);
     }).then(() => db.close());
   });
@@ -44,8 +50,9 @@ exports.del = function(req, res) {
 
 //更新
 exports.update = function(req, res) {
-  var book=req.body;
-  labels.update({"id":book.id}, book).then((obj)=>{
+  var label=req.body;
+  label.updateTime = Date.now();
+  labels.update({"id":label.id}, label).then((obj)=>{
     res.json(obj);
   }).then(() => db.close());
 };

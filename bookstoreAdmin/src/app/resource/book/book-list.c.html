@@ -1,0 +1,93 @@
+<div class="c-content-inner">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="c-line-title">{{title}}</p>
+    </div>
+  </div>
+  <p-growl [(value)]="msgs"></p-growl>
+  <div class="btn-toolbar">
+    <button pButton type="button" (click)="refresh()" icon="fa-refresh"></button>
+    <button pButton type="button" (click)="add()" icon="fa-plus"></button>
+    <button pButton type="button" (click)="update()" icon="fa-pencil" [disabled]="!selectedItem"></button>
+    <button pButton type="button" (click)="del()" icon="fa-minus" [disabled]="!selectedItem"></button>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+
+      <p-dataTable [value]="books" [paginator]="true" [rows]="20" dataKey="id" sortField="updateTime" selectionMode="single" [(selection)]="selectedItem">
+        <p-column field="name" header="名称"></p-column>
+        <p-column field="author" header="作者"></p-column>
+        <p-column field="press" header="出版社"></p-column>
+        <p-column field="categories" header="所属分类">
+          <ng-template let-col let-book="rowData" pTemplate="body">
+            <span *ngFor="let item of book[col.field]; trackBy: trackByFn">{{item.name}} </span>
+          </ng-template>
+        </p-column>
+        <p-column field="labels" header="标签">
+          <ng-template let-col let-book="rowData" pTemplate="body">
+            <span *ngFor="let item of book[col.field]; let i=index">{{item.name}} </span>
+          </ng-template>
+        </p-column>
+        <p-column field="createTime" header="创建时间">
+          <ng-template let-col let-book="rowData" pTemplate="body">
+            <span>{{book[col.field] | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+          </ng-template>
+        </p-column>
+        <p-column field="updateTime" header="更新时间">
+          <ng-template let-col let-book="rowData" pTemplate="body">
+            <span>{{book[col.field] | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+
+    </div>
+  </div>
+</div>
+
+<p-dialog [header]="addDialog.title" [(visible)]="addDialog.show" [width]="500">
+  <p-header>
+    {{title}}
+  </p-header>
+  <form class="form">
+    <div class="form-control">
+      <label class="form-label">名称:</label>
+      <div class="form-group">
+        <input type="text" pInputText [(ngModel)]="current.name" name="name"/>
+      </div>
+    </div>
+    <div class="form-control">
+      <label class="form-label">作者:</label>
+      <div class="form-group">
+        <input type="text" pInputText [(ngModel)]="current.author" name="author"/>
+      </div>
+    </div>
+    <div class="form-control">
+      <label class="form-label">出版社:</label>
+      <div class="form-group">
+        <input type="text" pInputText [(ngModel)]="current.press" name="press"/>
+      </div>
+    </div>
+    <div class="form-control">
+      <label class="form-label">所属分类:</label>
+      <div class="form-group">
+        <p-multiSelect [options]="categoryArr" [(ngModel)]="selectedCategories"
+                       name="categories" [panelStyle]="{minWidth:'12em'}" optionLabel="name">
+        </p-multiSelect>
+      </div>
+    </div>
+    <div class="form-control">
+      <label class="form-label">标签:</label>
+      <div class="form-group">
+        <p-multiSelect [options]="labelArr" [(ngModel)]="selectedLabels"
+                       name="labels" [panelStyle]="{minWidth:'12em'}" optionLabel="name">
+        </p-multiSelect>
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    <button pButton type="button" (click)="addConfirm()" label="确认"></button>
+  </p-footer>
+</p-dialog>
+
+<p-confirmDialog header="删除" icon="fa fa-question-circle" width="425">
+</p-confirmDialog>

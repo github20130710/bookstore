@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
                     "parentId": "010",
                     "name": "书籍",
                     "keyWord": "book",
-                    "icon": 'fa-columns',
+                    "icon": 'fa-book',
                     "url": '/app/book'
                 }, {
                     "id": "012",

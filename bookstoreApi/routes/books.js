@@ -33,6 +33,8 @@ exports.add = function(req, res) {
   books.findOne({}, {sort: {id: -1}}).then((obj)=>{
     //从客户端发送到服务器的图书对象
     var book=req.body;
+    book.createTime = Date.now();
+    book.updateTime = Date.now();
     //设置图书编号为最大的图书编号+1
     book.id=(parseInt(obj.id)+1)+"";
     //执行添加
@@ -58,6 +60,7 @@ exports.del = function(req, res) {
 exports.update = function(req, res) {
   //获得提交给服务器的json对象
   var book=req.body;
+  book.updateTime = Date.now();
   //执行更新,第1个参数是要更新的图书查找条件，第2个参数是要更新的对象
   books.update({"id":book.id}, book).then((obj)=>{
     //返回更新完成后的对象

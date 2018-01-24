@@ -10,9 +10,9 @@ const mainRoutes: Routes = [
         path: '',
         component: MainComponent,
         children: [
-            //{ path: 'book', loadChildren: 'app/resource/book/book.m#BookModule' },
+            { path: 'book', loadChildren: 'app/resource/book/book.m#BookModule' },
             { path: 'label', loadChildren: 'app/resource/label/label.m#LabelModule' },
-            //{ path: 'category', loadChildren: 'app/resource/category/category.m#CategoryModule' },
+            { path: 'category', loadChildren: 'app/resource/category/category.m#CategoryModule' },
             //{ path: 'member', loadChildren: 'app/people/member/member.m#MemberModule' },
             { path: 'role', loadChildren: 'app/people/role/role.module#RoleModule' },
             //{ path: 'right', loadChildren: 'app/people/right/right.m#RightModule' }

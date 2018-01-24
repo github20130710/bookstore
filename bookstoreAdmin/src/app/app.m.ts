@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 
-import { DataTableModule, ButtonModule, DialogModule } from 'primeng/primeng';
+import { DataTableModule, ButtonModule, DialogModule, ConfirmDialogModule, GrowlModule, ToolbarModule, InputTextModule } from 'primeng/primeng';
 
 // app
 import { AppComponent } from './app.c';
@@ -25,7 +25,11 @@ import  { AppRoutingModule } from './app-routing.m';
     HttpClientModule,
     DataTableModule,
     ButtonModule,
-    DialogModule
+    DialogModule,
+    ConfirmDialogModule,
+    GrowlModule,
+    ToolbarModule,
+    InputTextModule
   ],
   providers: [
     AppService
