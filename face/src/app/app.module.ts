@@ -1,10 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './error-page/page-not-found.c';
-import  { AppRoutingModule } from './app-routing.m';
+import { AppRoutingModule } from './app-routing.m';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import  { AppRoutingModule } from './app-routing.m';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

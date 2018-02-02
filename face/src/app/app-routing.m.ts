@@ -12,6 +12,9 @@ const appRoutes: Routes = [
     path: 'home',
     loadChildren: 'app/home/home.m#HomeModule'
   },{
+    path: 'demo',
+    loadChildren: 'app/demo/demo.m#DemoModule'
+  },{
     path:'**',
     component: PageNotFoundComponent
   }

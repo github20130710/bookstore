@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './home.c.html'
 })
 export class HomeComponent {
-  title = 'app';
+  title = "Sophia Wong's BookStore";
 }

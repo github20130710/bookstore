@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { HomeRoutingModule } from './home-routing.m';
 import { HomeComponent } from './home.c';
 
 @NgModule({
@@ -7,6 +8,7 @@ import { HomeComponent } from './home.c';
     HomeComponent
   ],
   imports: [
+    HomeRoutingModule
   ],
   providers: []
 })
