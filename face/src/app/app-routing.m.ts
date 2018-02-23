@@ -7,13 +7,13 @@ import { PageNotFoundComponent } from './error-page/page-not-found.c';
  * app路由
  */
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {
+  { path: '', redirectTo: '/home', pathMatch: 'full'
+  },{
     path: 'home',
     loadChildren: 'app/home/home.m#HomeModule'
   },{
     path: 'demo',
-    loadChildren: 'app/demo/demo.m#DemoModule'
+    loadChildren: 'app/demo/demo.module#DemoModule'
   },{
     path:'**',
     component: PageNotFoundComponent

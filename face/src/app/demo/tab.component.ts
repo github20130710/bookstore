@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DemoService } from '../demo.service';
+import { DemoService } from './demo.service';
 
 @Component({
   selector: 'app-tab',

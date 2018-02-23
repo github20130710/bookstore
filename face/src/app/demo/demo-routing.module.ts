@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DemoComponent } from './demo.c';
-import { ButtonComponent } from './base/button.c';
-import { TabComponent } from './base/tab.c';
+import { DemoComponent } from './demo.component';
+import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent } from './index';
 
 /**
  * 主页路由
@@ -18,6 +17,15 @@ const demoRoutes: Routes = [
       },{
         path: 'tab',
         component: TabComponent
+      //},{
+      //  path: 'grid',
+      //  component: GridComponent
+      },{
+        path: 'carousel',
+        component: CarouselComponent
+      },{
+        path: 'breadcrumb',
+        component: BreadcrumbComponent
       }
     ]
   }
