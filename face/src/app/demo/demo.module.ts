@@ -11,9 +11,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
-import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent } from './index';
-
-import { GridModule } from '../../util/components/grid/grid.module';
+import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent, GridComponent } from './index';
 
 @NgModule({
   declarations: [
@@ -21,7 +19,8 @@ import { GridModule } from '../../util/components/grid/grid.module';
     BreadcrumbComponent,
     ButtonComponent,
     TabComponent,
-    CarouselComponent
+    CarouselComponent,
+    GridComponent
   ],
   imports: [
     DemoRoutingModule,
@@ -29,7 +28,6 @@ import { GridModule } from '../../util/components/grid/grid.module';
     FormsModule,
     ButtonsModule.forRoot(),
     TabsModule.forRoot(),
-    GridModule,
     CarouselModule.forRoot()
   ],
   providers: [

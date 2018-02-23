@@ -7,12 +7,18 @@ import { Breadcrumb } from './components/index';
 
 import { Highlight } from './directives/index';
 
+import { GridModule } from './modules/index';
+
 const THEME_DIRECTIVES = [
   Highlight
 ];
 
 const THEME_COMPONENTS = [
   Breadcrumb
+];
+
+const THEME_MODULES = [
+  GridModule
 ];
 
 @NgModule({
@@ -24,11 +30,13 @@ const THEME_COMPONENTS = [
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ...THEME_MODULES
   ],
   exports: [
     ...THEME_DIRECTIVES,
-    ...THEME_COMPONENTS
+    ...THEME_COMPONENTS,
+    ...THEME_MODULES
   ]
 })
 export class ThemeModule {

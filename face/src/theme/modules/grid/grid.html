@@ -1,0 +1,23 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr role="row">
+        <th *ngFor="let column of columns" ngClass="{{column.className || ''}}">
+          {{column.name}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows" (click)="rowClick(row)">
+        <td (click)="cellClick(row, column.field)" *ngFor="let column of columns" [innerHtml]="sanitize(getData(row, column.field))"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-xs-12 col-12">
+      <pagination [totalItems]="config.totalItems" [itemsPerPage]="config.itemsPerPage" [(ngModel)]="currentPage" class="pagination-sm"
+                  [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+</div>
+

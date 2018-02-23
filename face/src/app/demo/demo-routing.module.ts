@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DemoComponent } from './demo.component';
-import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent } from './index';
+import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent, GridComponent } from './index';
 
 /**
  * 主页路由
@@ -17,9 +17,9 @@ const demoRoutes: Routes = [
       },{
         path: 'tab',
         component: TabComponent
-      //},{
-      //  path: 'grid',
-      //  component: GridComponent
+      },{
+        path: 'grid',
+        component: GridComponent
       },{
         path: 'carousel',
         component: CarouselComponent
