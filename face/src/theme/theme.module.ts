@@ -7,7 +7,7 @@ import { Breadcrumb } from './components/index';
 
 import { Highlight } from './directives/index';
 
-import { GridModule } from './modules/index';
+import { GridModule, MenuModule } from './modules/index';
 
 const THEME_DIRECTIVES = [
   Highlight
@@ -18,7 +18,8 @@ const THEME_COMPONENTS = [
 ];
 
 const THEME_MODULES = [
-  GridModule
+  GridModule,
+  MenuModule
 ];
 
 @NgModule({

@@ -10,7 +10,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'
   },{
     path: 'home',
-    loadChildren: 'app/home/home.m#HomeModule'
+    loadChildren: 'app/home/home.module#HomeModule'
   },{
     path: 'demo',
     loadChildren: 'app/demo/demo.module#DemoModule'

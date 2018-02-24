@@ -8,7 +8,8 @@ import { DemoService } from "./demo.service";
   <li><a routerLink="/demo/tab">标签页</a></li>
   <li><a routerLink="/demo/grid">表格</a></li>
   <li><a routerLink="/demo/carousel">旋转木马</a></li>
-  <li><a routerLink="/demo/breadcrumb">面包屑</a></li></ul>
+  <li><a routerLink="/demo/breadcrumb">面包屑</a></li>
+  <li><a routerLink="/demo/menu">菜单</a></li></ul>
   <div class="container"><router-outlet></router-outlet></div>`
 })
 export class DemoComponent {

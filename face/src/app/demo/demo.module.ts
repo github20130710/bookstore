@@ -11,7 +11,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
-import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent, GridComponent } from './index';
+import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent, GridComponent, MenuComponent } from './index';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { BreadcrumbComponent, ButtonComponent, CarouselComponent, TabComponent, 
     ButtonComponent,
     TabComponent,
     CarouselComponent,
-    GridComponent
+    GridComponent,
+    MenuComponent
   ],
   imports: [
     DemoRoutingModule,
