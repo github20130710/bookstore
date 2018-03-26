@@ -1,0 +1,56 @@
+.ui-container{
+  position: relative;
+  overflow: hidden;
+  width: 950px;
+  height: 600px;
+
+  .ui-nav{
+    position: relative;
+    border-bottom: 1px solid #00a6dd;
+
+    .ui-nav-title{
+      position: relative;
+      left:0;
+      top:0;
+      font-size: 16px;
+      width: 150px;
+    }
+
+    .ui-nav-menu{
+      position: absolute;
+      left: 150px;
+      top:0;
+      height: 35px;
+    }
+  }
+
+  .ui-content{
+    margin: 0;
+    padding: 10px 0 0 0;
+    border: 0;
+    overflow: hidden;
+
+    .ui-content-box{
+      position: relative;
+      float: left;
+      width: 150px;
+      height: 235px;
+      margin: 0 10px 15px 0;
+      .name, .author, .price {
+        text-align: center;
+        overflow: hidden;
+      }
+      .author{
+        color: #7da01f;
+      }
+      .price .discount{
+        color: #C6071D;
+        font-weight: 400;
+      }
+      .price .prime{
+        color: #767980;
+        text-decoration: line-through;
+      }
+    }
+  }
+}

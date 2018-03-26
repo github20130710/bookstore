@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="ui-container">
+    <div class="ui-nav">
+      <span class="ui-nav-title">1F  推荐书单</span>
+      <ul class="ui-nav-menu nav nav-pills">
+        <li>文学</li><li>历史</li><li>科技</li>
+      </ul>
+    </div>
+    <div class="ui-content">
+      <!--<div class="ui-content-box">-->
+        <!--<a title="古典诗词" href="" target="_blank">-->
+          <!--<img src="assets/img/books/wenxue-1.jpg" alt="古典诗词">-->
+        <!--</a>-->
+        <!--<p class="name"><a title="古典诗词" href="" target="_blank">古典诗词</a></p>-->
+        <!--<p class="author"><span>叶嘉莹</span></p>-->
+        <!--<p class="price">-->
+          <!--<span class="discount">$45.00</span>-->
+          <!--<span class="prime">$54.00</span>-->
+        <!--</p>-->
+      <!--</div>-->
+      <div class="ui-content-box" *ngFor="let book of books">
+        <a title="{{book.name}}" href="" target="_blank">
+          <img src="assets/img/books/wenxue-1.jpg" alt="{{book.name}}">
+        </a>
+        <p class="name"><a title="{{book.name}}" href="" target="_blank">{{book.name}}</a></p>
+        <p class="author"><span>{{book.author}}</span></p>
+        <p class="price">
+          <span class="discount">$45.00</span>
+          <span class="prime">$54.00</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
