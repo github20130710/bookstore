@@ -1,31 +1,26 @@
-var express = require('express');
-var morgan = require('morgan');
-var path = require('path');
-var favicon = require('serve-favicon');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var errorhandler = require('errorhandler');
+import express from "express";
+//import consign from "consign";
+import path from 'path';
+import bodyParser from 'body-parser';
+import methodOverride from 'method-override';
+import errorhandler from 'errorhandler';
 
-var index = require('./routes/index'),
-    books = require('./routes/books'),
-    labels = require('./routes/labels'),
-    categories = require('./routes/categories');
+const PORT = 3000;
+const app = express();
+//app.set("json spaces", 4);
 
-var app = express();
+//consign()
+    //.include("db/base.js")
+    //.then("db/books.js")
+    //.then("routes/books.js")
+    //.into(app);
+
+var books = require('./routes/books');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// uncomment after placing your favicon in /public
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-//app.use(express.favicon());
-app.use(morgan('dev'));
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-// parse application/json
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -43,30 +38,20 @@ app.all('*', function(req, res, next) {
   }
 });
 
-app.use('/', index);
 // -------------book---------------------
 //获得所有的图书列表
-app.get('/books', books.list);
-//最大的编号
-app.get('/books/maxid', books.getMax);
+app.post('/books', books.query);
+app.get('/books', books.query);
+//按ID获取一个
+app.get('/books/findById?:id', books.findById);
 //添加
 app.post('/books/book', books.add);
 //删除
-app.delete('/books/id/:id', books.del);
+app.delete('/books', books.delete);
 //更新
 app.put('/books/book', books.update);
-// -------------label---------------------
-app.get('/labels', labels.list);
-app.get('/labels/id/:id', labels.getOne);
-app.post('/labels/label', labels.add);
-app.delete('/labels/id/:id', labels.del);
-app.put('/labels/label', labels.update);
-// -------------category---------------------
-app.get('/categories', categories.list);
-app.get('/categories/id/:id', categories.getOne);
-app.post('/categories/category', categories.add);
-app.delete('/categories/id/:id', categories.del);
-app.put('/categories/category', categories.update);
+
+app.listen(PORT, () => console.log(`NTask API - Port ${PORT}`));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

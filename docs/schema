@@ -1,0 +1,29 @@
+// 书籍
+{
+    id: String,
+    name: String,
+    author: String,
+    press: String,
+    provider: String,
+    price: Float,
+    discount: Float,    //折扣价
+    stock: Number,      //库存
+    sold: Number,       //已售
+    tags: String        //标签
+}
+
+// 标签
+{
+    id: String,
+    name: String,
+    value: String
+}
+
+// 用户
+{
+    id: String,
+	name: String,
+	password: String,
+	phone: String,
+	email: String
+}

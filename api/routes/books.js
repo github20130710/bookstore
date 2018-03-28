@@ -1,69 +1,64 @@
 /*
- * 使用monk访问mongodb
- * 以rest的方式向前台提供服务
+ * books路由
+ * 业务逻辑
  */
 
-//依赖monk模块
-var monk = require('monk');
-//连接并打开数据库
-var db = monk('localhost:27017/bookstore');
-//从数据库中获得books集合，类似表，并非所有数据， key
-var books = db.get('books');
+var url = require('url');
+var BooksDao = require('../db/books');
 
-//列出所有的图书json
-exports.list = function(req, res) {
-  //无条件查找所有的图书，then是当查找完成时回调的异步方法
-  books.find({}).then((docs) => {
-    //返回json给客户端
-    res.json(docs);
-  }).then(() => db.close());   //关闭数据库
+//查询图书 不分页
+exports.query = function(req, res) {
+  var params = req.body || {};
+  BooksDao.query(params, (docs)=>{
+    res.send(docs);
+  });
 };
 
-//获得最大id
-exports.getMax=function(req,res){
-  //找一个，根据id降序排序，
-  books.findOne({}, {sort: {id: -1}}).then((bookObj)=>{
-    res.json(bookObj);
-  }).then(() => db.close());
+// // 查询图书  分页
+// exports.page = function(req, res) {
+//   var params = req.body || {};
+//   var pageSize = params.pageSize, curPage = params.curPage, conditions = params.conditions;
+//   if(!params.pageSize)  pageSize = 15;
+//   if(!params.curPage)  curPage = 1;
+//   BooksDao.query(conditions, (docs)=>{
+//     res.send(docs);
+//   });
+// };
+
+// 获得一个
+exports.findById=function(req,res){
+  var id = url.parse(req.url, true).search || "";
+  if(id.indexOf("?")>-1)  id = id.substr(1);
+  BooksDao.findById(id, (docs)=>{
+    res.send(docs);
+  });
 };
 
 //添加图书
 exports.add = function(req, res) {
-  //先找到最大的图书编号
-  books.findOne({}, {sort: {id: -1}}).then((obj)=>{
-    //从客户端发送到服务器的图书对象
-    var book=req.body;
-    book.createTime = Date.now();
-    book.updateTime = Date.now();
-    //设置图书编号为最大的图书编号+1
-    book.id=(parseInt(obj.id)+1)+"";
-    //执行添加
-    books.insert(book).then((docs) => {
-      //返回添加成功的对象
-      res.json(docs);
-    }).then(() => db.close());
+  //从客户端发送到服务器的图书对象
+  var book=req.body;
+  book.cDate = Date.now();
+  book.uDate = Date.now();
+  BooksDao.save(book, (docs) => {
+    res.send(docs);
   });
 };
 
 //删除图书
-exports.del = function(req, res) {
-  //从路径中取参数id,/:id
-  var id=req.params.id;
-  //移除编号为id的图书
-  books.remove({"id":id}).then((obj)=>{
-    //返回移除结果
-    res.json(obj);
-  }).then(() => db.close());
+exports.delete = function(req, res) {
+  var conditions=req.body;
+  BooksDao.delete(conditions, (docs) => {
+    res.send(docs);
+  });
 };
 
 //更新
 exports.update = function(req, res) {
-  //获得提交给服务器的json对象
-  var book=req.body;
-  book.updateTime = Date.now();
-  //执行更新,第1个参数是要更新的图书查找条件，第2个参数是要更新的对象
-  books.update({"id":book.id}, book).then((obj)=>{
-    //返回更新完成后的对象
-    res.json(obj);
-  }).then(() => db.close());
+  var cond=req.body.conditions;
+  var book=req.body.entity;
+  book.uDate = Date.now();
+  BooksDao.update(cond, book, (docs) => {
+    res.send(docs);
+  });
 };

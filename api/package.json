@@ -1,12 +1,18 @@
 {
-  "name": "bookstoreapi",
+  "name": "api",
   "version": "0.0.0",
   "private": true,
+  "description": "Bookstore API",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "babel-node app.js"
   },
+  "author": "Sophia.Wang",
+  "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.17.2",
+    "consign": "^0.1.6",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
@@ -14,6 +20,7 @@
     "express": "~4.15.2",
     "logger": "0.0.1",
     "method-override": "^2.3.10",
+    "mongoose": "^5.0.11",
     "monk": "^6.0.5",
     "morgan": "^1.8.2",
     "serve-favicon": "~2.4.2"

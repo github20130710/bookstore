@@ -1,0 +1,35 @@
+{
+  "books": {
+    "id": "String",
+    "name": "String",
+    "author": "String",
+    "press": "String",
+    "provider": "String",
+    "price": "Number",
+    "discount": "Number",
+    "stock": "Number",
+    "sold": "Number",
+    "tags": "String",
+    "cDate": "Date",
+    "uDate": "Date"
+  },
+  "categories": {
+    "id": "String",
+    "name": "String",
+    "value": "String"
+  },
+  "tags": {
+    "id": "String",
+    "name": "String",
+    "value": "String"
+  },
+  "users": {
+    "id": "String",
+    "name": "String",
+    "password": "String",
+    "phone": "String",
+    "email": "String",
+    "cDate": "Date",
+    "uDate": "Date"
+  }
+}
