@@ -4,20 +4,20 @@
  */
 
 var url = require('url');
-var CategoryDao = require('../models/category');
+var TagDao = require('../models/tag');
 
-//查询图书类型 不分页
+//查询图书标签 不分页
 exports.query = function(req, res) {
   var params = req.body || {};
-  CategoryDao.find(params, (docs)=>{
+  TagDao.find(params, (docs)=>{
     res.send(docs);
   });
 };
 
-// 查询图书类型  分页
+// 查询图书标签  分页
 exports.page = function(req, res) {
   var params = req.body || {};
-  CategoryDao.page(params, (docs)=>{
+  TagDao.page(params, (docs)=>{
     res.send(docs);
   });
 };
@@ -26,25 +26,25 @@ exports.page = function(req, res) {
 exports.findById=function(req,res){
   var id = url.parse(req.url, true).search || "";
   if(id.indexOf("?")>-1)  id = id.substr(1);
-  CategoryDao.findOne(id, (docs)=>{
+  TagDao.findOne(id, (docs)=>{
     res.send(docs);
   });
 };
 
 //添加图书
 exports.add = function(req, res) {
-  var category=req.body;
-  CategoryDao.save(category, (err) => {
+  var tag=req.body;
+  TagDao.save(tag, (err) => {
     console.log(err);
     if(err) {
-      res.send('添加图书类型失败！');
+      res.send('添加图书标签失败！');
     } else {
-      res.send('添加图书类型成功！');
+      res.send('添加图书标签成功！');
     }
   });
 };
 
-//删除图书类型
+//删除图书标签
 exports.delete = function(req, res) {
   var conditions=req.body;
   CategoryDao.remove(conditions, (err) => {
@@ -56,7 +56,7 @@ exports.delete = function(req, res) {
 exports.update = function(req, res) {
   var cond=req.body.conditions;
   var category=req.body.entity;
-  CategoryDao.update(cond, category, (err) => {
+  TagDao.update(cond, category, (err) => {
     res.send(err);
   });
 };

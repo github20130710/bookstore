@@ -9,14 +9,16 @@
     "discount": "Number",
     "stock": "Number",
     "sold": "Number",
-    "tags": "String",
+    "categories": "Array",
+    "tags": "Array",
     "cDate": "Date",
     "uDate": "Date"
   },
   "categories": {
     "id": "String",
     "name": "String",
-    "value": "String"
+    "value": "String",
+    "enable": "Boolean"
   },
   "tags": {
     "id": "String",

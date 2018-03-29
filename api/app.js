@@ -16,6 +16,8 @@ const app = express();
     //.into(app);
 
 var books = require('./routes/books');
+var categories = require('./routes/categories');
+var tags = require('./routes/tags');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,6 +44,7 @@ app.all('*', function(req, res, next) {
 //获得所有的图书列表
 app.post('/books', books.query);
 app.get('/books', books.query);
+app.post('/books/page', books.page);
 //按ID获取一个
 app.get('/books/findById?:id', books.findById);
 //添加
@@ -50,6 +53,19 @@ app.post('/books/book', books.add);
 app.delete('/books', books.delete);
 //更新
 app.put('/books/book', books.update);
+
+//获得所有的图书类型和标签列表
+app.get('/categories', categories.query);
+app.get('/categories/findById?:id', categories.findById);
+app.post('/categories/category', categories.add);
+app.delete('/categories', categories.delete);
+app.put('/categories/category', categories.update);
+
+app.get('/tags', tags.query);
+app.get('/tags/findById?:id', tags.findById);
+app.post('/tags/tag', tags.add);
+app.delete('/tags', tags.delete);
+app.put('/tags/tag', tags.update);
 
 app.listen(PORT, () => console.log(`NTask API - Port ${PORT}`));
 
