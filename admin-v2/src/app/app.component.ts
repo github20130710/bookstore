@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { MENUS } from './app-menu';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+
+  constructor() { }
+
+  private menuItems = MENUS;
+
 }
