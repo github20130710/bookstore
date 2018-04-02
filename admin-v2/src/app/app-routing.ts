@@ -5,17 +5,9 @@ import { PageNotFoundComponent } from './error-page/page-not-found.component';
 /**
  * app路由
  */
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
-@NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
-})
-export class AppRoutingModule {}
+export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(appRoutes, { useHash: true });

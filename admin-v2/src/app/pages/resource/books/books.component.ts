@@ -55,6 +55,8 @@ export class BooksComponent implements OnInit{
 })
 
 export class BookCreateDialog {
+  title:string;
+  book:any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.title = data.title || '新增书籍';

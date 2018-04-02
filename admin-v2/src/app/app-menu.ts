@@ -1,6 +1,6 @@
 export const MENUS = [
   {
-    path: 'app',
+    path: 'pages',
     children: [
       {
         title: 'Dashboard',
@@ -18,13 +18,13 @@ export const MENUS = [
         order: 100,
         children: [
           {
-            path: '/resource/book',
+            path: 'pages/resource/book',
             title: '书籍'
           },{
-            path: '/resource/category',
+            path: 'pages/resource/category',
             title: '分类'
           },{
-            path: '/resource/tag',
+            path: 'pages/resource/tag',
             title: '标签'
           }
         ]

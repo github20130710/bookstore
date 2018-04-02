@@ -1,6 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ResourceComponent } from './resource.component';
 import { BooksComponent } from './books/books.component';
 
 /**
@@ -9,21 +10,11 @@ import { BooksComponent } from './books/books.component';
 const ResourceRoutes: Routes = [
   {
     path: '',
+    component: ResourceComponent,
     children: [
-      {
-        path: 'book',
-        component: BooksComponent
-      }
+      { path: 'book', component: BooksComponent }
     ]
   }
 ];
 
-@NgModule({
-  imports: [
-    RouterModule.forChild(ResourceRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
-})
-export class ResourceRoutingModule {}
+export const ResourceRoutingModule = RouterModule.forChild(ResourceRoutes);

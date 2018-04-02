@@ -7,11 +7,14 @@ import { PagesComponent } from './pages.component';
  */
 export const pagesRoutes: Routes = [
   {
+    path: 'demo',
+    loadChildren: 'app/pages/demo/demo.module#DemoModule'
+  },
+  {
     path: 'pages',
     component: PagesComponent,
     children: [
-      { path: '', redirectTo: 'demo', pathMatch: 'full' },
-      { path: 'demo', loadChildren: 'app/pages/demo/demo.module#DemoModule' },
+      { path: '', redirectTo: 'resource', pathMatch: 'full' },
       { path: 'resource', loadChildren: 'app/pages/resource/resource.module#ResourceModule' }
     ]
   }
