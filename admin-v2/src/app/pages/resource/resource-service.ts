@@ -21,7 +21,16 @@ export class ResourceService {
   }
 
   createBook(params):any {
+    return this._httpInterceptorService.post(this.url+'/books/book', params);
+  }
 
+  editBook(condition, params):any {
+    let body = {condition, params};
+    return this._httpInterceptorService.put(this.url+'/books/book', body);
+  }
+
+  deleteBook(params):any {
+    return this._httpInterceptorService.delete(this.url+'/books', params);
   }
 
   /********************************

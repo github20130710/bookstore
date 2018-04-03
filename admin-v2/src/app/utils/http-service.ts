@@ -55,7 +55,7 @@ export class HttpInterceptorService {
    */
   public put(url: string, params: any) {
     params = params || {};
-    return this.httpClient.get(url, params);
+    return this.httpClient.put(url, params);
   }
 
   /**

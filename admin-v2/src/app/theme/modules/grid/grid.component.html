@@ -1,19 +1,45 @@
-<div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
+<div class="grid-container">
 
+  <!-- Filter Content -->
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <mat-table #table [dataSource]="rows" matSort>
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selectRow(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Content Column -->
     <ng-container *ngFor="let column of columns" matColumnDef="{{column.name}}">
-      <mat-header-cell *matHeaderCellDef>{{column.display}}</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>{{column.display}}</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element[column.name]}} </mat-cell>
     </ng-container>
 
+    <!-- Render Row -->
     <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay;" (click)="selection.toggle(row)"></mat-row>
 
   </mat-table>
 
+  <!-- Paginator -->
   <mat-paginator *ngIf="options.paging" #paginator
                  [pageSize]="options.pageSize"
                  [pageSizeOptions]="options.pageSizeOptions"
+                 [length]="options.length"
                  [showFirstLastButtons]="true">
   </mat-paginator>
 </div>

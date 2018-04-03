@@ -5,7 +5,7 @@ export const MENUS = [
       {
         title: 'Dashboard',
         icon: 'ion-android-home',
-        path: 'dashboard',
+        path: 'demo',
         selected: false,
         expanded: false,
         order: 0
