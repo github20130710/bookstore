@@ -10,6 +10,6 @@
     <button mat-raised-button (click)="remove()">删除</button>
   </div>
 
-  <sw-ui-grid [columns]="columns" [dataSource]="books"></sw-ui-grid>
+  <sw-ui-grid [columns]="columns" [dataSource]="books" (selected)="onSelected($event)"></sw-ui-grid>
 
 </div>

@@ -1,4 +1,4 @@
-import { Component, ViewChild, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Input, Output } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatSort, MatPaginatorIntl, PageEvent } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -10,13 +10,15 @@ import { SelectionModel } from '@angular/cdk/collections';
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css']
 })
-export class GridComponent {
+export class GridComponent implements OnInit{
 
-  @Input()
-  dataSource:Array<any> = [];
+  constructor() { }
 
-  @Output()
-  selectedRows:Array<any> = [];
+  @Input()  dataSource:Array<any> = [];
+
+  @Output() selected = new EventEmitter();
+
+  selectedArray:any;     //选中的行集合
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,10 +30,11 @@ export class GridComponent {
     currentPage: 1,
     pageSize: 5,
     pageSizeOptions: [5, 10, 20],
-    length: 0
+    length: 0,
+    multiSelect: false    //默认单选
   };
-  selection = new SelectionModel<any>(true, []);
-  columnsToDisplay:Array<any> = [];   //待展示的列
+  selection = new SelectionModel<any>(false, []);
+  columnsToDisplay:Array<String> = [];   //待展示的列
   rows:any;       //每页显示的数据
 
   @Input()
@@ -65,6 +68,13 @@ export class GridComponent {
     this.rows = new MatTableDataSource(this.dataSource) || {};
     this.columnsToDisplay = this.columns.map(x => x.name);
     this.columnsToDisplay.unshift('select');
+    if(this._options.multiSelect) {
+      this.selection = new SelectionModel<any>(true, []);
+      this.selectedArray = [];
+    } else {
+      this.selection = new SelectionModel<any>(false, []);
+      this.selectedArray = {};
+    }
   }
 
   /**
@@ -88,17 +98,24 @@ export class GridComponent {
       this.rows.data.forEach(row => this.selection.select(row));
   }
 
-  selectRow(row){
+  onSelectRow(row){
     this.selection.toggle(row);
     var isSelect = this.selection.isSelected(row);
-    if(isSelect) this.selectedRows.push(row);
-    else{
-      let index = this.selectedRows.findIndex((value, index, arr) => {
-        return value.id=row.id
-      });
-      this.selectedRows.splice(index);
+    if(this._options.multiSelect){    //多选
+      if(isSelect){
+        this.selectedArray.push(row);
+      } else{
+        let index = this.selectedArray.findIndex((_value, _index) => {
+          if(_value==row)   return _index;
+        });
+        this.selectedArray.splice(index, 1);
+      }
+    } else {      // 单选
+      if(isSelect)  this.selectedArray = row;
+      else  this.selectedArray = {};
     }
-    console.log(this.selectedRows);
+
+    this.selected.emit(this.selectedArray);
   }
 
   /** Filter all rows. */

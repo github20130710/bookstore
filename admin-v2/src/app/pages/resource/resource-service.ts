@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptorService } from '../../utils/http-service';
+import { HttpClient } from '@angular/common/http';
+import { RequestOptions } from '@angular/common/http';
 
 /**
  * resource 服务
@@ -9,28 +10,30 @@ export class ResourceService {
 
   url = 'http://localhost:3000';
 
-  constructor(private _httpInterceptorService: HttpInterceptorService) {
+  constructor(private httpClient: HttpClient) {
   }
 
   /********************************
    * 书籍
    */
-  queryBooks(params): any{
-    if(!params) params = {};
-    return this._httpInterceptorService.get(this.url + '/books', params);
+  queryBooks(): any{
+    let params = {};
+    if(arguments.length>0) params = arguments[0];
+    return this.httpClient.get(this.url + '/books', params);
   }
 
   createBook(params):any {
-    return this._httpInterceptorService.post(this.url+'/books/book', params);
+    return this.httpClient.post(this.url+'/books/book', params);
   }
 
   editBook(condition, params):any {
     let body = {condition, params};
-    return this._httpInterceptorService.put(this.url+'/books/book', body);
+    return this.httpClient.put(this.url+'/books/book', body);
   }
 
-  deleteBook(params):any {
-    return this._httpInterceptorService.delete(this.url+'/books', params);
+  deleteBookById(params):any {
+    //this.defaultOptions = new RequestOptions({body : params});
+    //return this.httpClient.delete(this.url+'/books/book', this.defaultOptions);
   }
 
   /********************************

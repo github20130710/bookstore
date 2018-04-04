@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-demo',
@@ -12,8 +12,9 @@ export class DemoComponent implements OnInit {
   ngOnInit() {
   }
 
+  private options = { multiSelect: true };
+
   private columns = [
-    {'name':'id', 'display':'ID'},
     {'name':'name', 'display':'名称'},
     {'name':'weight', 'display':'权重', 'cellTemplate':'{{value}} %'},
     {'name':'symbol', 'display':'标识'}
@@ -41,4 +42,8 @@ export class DemoComponent implements OnInit {
     {id: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
     {id: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
   ];
+
+  onSelected(data: any) {
+    console.log(data);
+  }
 }

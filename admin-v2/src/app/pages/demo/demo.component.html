@@ -4,4 +4,4 @@
 <h4>Dialog</h4>
 
 <h4>Grid</h4>
-<sw-ui-grid [columns]="columns" [dataSource]="ELEMENT_DATA"></sw-ui-grid>
+<sw-ui-grid [columns]="columns" [options]="options" [dataSource]="ELEMENT_DATA" (selected)="onSelected($event)"></sw-ui-grid>

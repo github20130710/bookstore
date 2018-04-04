@@ -50,7 +50,7 @@ app.get('/books/findById?:id', books.findById);
 //添加
 app.post('/books/book', books.add);
 //删除
-app.delete('/books', books.delete);
+app.delete('/books/book', books.delete);
 //更新
 app.put('/books/book', books.update);
 

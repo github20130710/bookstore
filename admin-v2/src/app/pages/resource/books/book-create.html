@@ -1,37 +1,37 @@
-<form novalidate [formGroup]="_form">
+<form novalidate>
 
   <h2 mat-dialog-title>{{title}}</h2>
 
   <div mat-dialog-content>
     <mat-form-field hintLabel="最大字符长度为30">
-      <input matInput #input maxlength="30" placeholder="名称" [(ngModel)]="book.name">
+      <input matInput #input maxlength="30" placeholder="名称" [(ngModel)]="book.name" name="name">
       <mat-hint align="end"></mat-hint>
     </mat-form-field>
 
     <mat-form-field hintLabel="最大字符长度为10">
-      <input matInput #input maxlength="10" placeholder="作者" [(ngModel)]="book.author">
+      <input matInput #input maxlength="10" placeholder="作者" [(ngModel)]="book.author" name="author">
       <mat-hint align="end"></mat-hint>
     </mat-form-field>
 
-    <mat-form-field hintLabel="最大字符长度为10">
-      <input matInput #input maxlength="10" placeholder="出版社" [(ngModel)]="book.press">
+    <mat-form-field hintLabel="最大字符长度为30">
+      <input matInput #input maxlength="30" placeholder="出版社" [(ngModel)]="book.press" name="press">
       <mat-hint align="end"></mat-hint>
     </mat-form-field>
 
     <mat-form-field hintLabel="">
-      <input matInput #input maxlength="10" placeholder="价格" type="number" [(ngModel)]="book.price">
+      <input matInput #input maxlength="10" placeholder="价格" type="number" [(ngModel)]="book.price" name="price">
       <span matPrefix>¥&nbsp;</span>
       <mat-hint align="end"></mat-hint>
     </mat-form-field>
 
     <mat-form-field hintLabel="">
-      <input matInput #input maxlength="10" placeholder="折扣价" type="number" [(ngModel)]="book.discount">
+      <input matInput #input maxlength="10" placeholder="折扣价" type="number" [(ngModel)]="book.discount" name="discount">
       <span matPrefix>¥&nbsp;</span>
       <mat-hint align="end"></mat-hint>
     </mat-form-field>
 
     <mat-form-field hintLabel="">
-      <input matInput #input maxlength="10" placeholder="库存" type="number" [(ngModel)]="book.stock">
+      <input matInput #input maxlength="10" placeholder="库存" type="number" [(ngModel)]="book.stock" name="stock">
       <mat-hint align="end"></mat-hint>
       <span matSuffix>&nbsp;本</span>
     </mat-form-field>
@@ -39,7 +39,7 @@
 
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>取消</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial [disabled]="_form.invalid" (click)="onClick(book)">确定</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick(book)">确定</button>
   </mat-dialog-actions>
 
 </form>
