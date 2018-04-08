@@ -1,0 +1,16 @@
+<button (click)="goBack()">返回列表</button>
+<div *ngIf="current">
+  <h2>{{ current.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{current.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="current.name" placeholder="name"/>
+    </label>
+    <label>weight:
+      <input [(ngModel)]="current.weight" placeholder="weight"/>
+    </label>
+    <label>symbol:
+      <input [(ngModel)]="current.symbol" placeholder="symbol"/>
+    </label>
+  </div>
+</div>

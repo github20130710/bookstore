@@ -1,0 +1,5 @@
+<h2>LOGIN</h2>
+
+<p>{{message}}</p>
+<button type="button" name="button" (click)="onOk()" *ngIf="!authService.isLoggedIn">登录</button>
+<button type="button" name="button" (click)="onNo()" *ngIf="authService.isLoggedIn">退出</button>
