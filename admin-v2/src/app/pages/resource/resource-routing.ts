@@ -1,20 +1,32 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuardService } from '../../utils/auth-guard.service';
+import { AuthGuard } from '../../utils/auth-guard.service';
+import { AuthService } from '../../utils/auth.service';
 import { BooksComponent } from './books/books.component';
 
 /**
  * resource路由
  */
-const ResourceRoutes: Routes = [
+const resourceRoutes: Routes = [
   {
     path: '',
-    // canActivateChild: [ AuthGuardService ],
+    canActivateChild: [ AuthGuard ],
     children: [
       { path: 'book', component: BooksComponent }
     ]
   }
 ];
 
-export const ResourceRoutingModule = RouterModule.forChild(ResourceRoutes);
+@NgModule({
+  imports: [ RouterModule.forRoot(resourceRoutes) ],
+  exports: [ RouterModule ],
+  providers: [
+    AuthGuard,
+    AuthService
+  ]
+})
+
+export class ResourceRoutingModule {
+
+}

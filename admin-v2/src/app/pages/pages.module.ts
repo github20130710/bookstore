@@ -3,14 +3,12 @@ import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
 
 import { PagesComponent } from './pages.component';
-import { PagesRoute } from './pages-routing';
+import { PagesRoutingModule } from './pages-routing';
 
 import { MatDialogModule, MatFormFieldModule } from '@angular/material';
 import { ThemeModule } from '../theme/theme.module';
 import { LoginModule } from './login/login.module';
 import { DemoModule } from './demo/demo.module';
-
-import { AuthGuardService } from '../utils/auth-guard.service';
 
 
 @NgModule({
@@ -18,7 +16,7 @@ import { AuthGuardService } from '../utils/auth-guard.service';
     PagesComponent
   ],
   imports: [
-    PagesRoute,
+    PagesRoutingModule,
     MatSidenavModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -26,6 +24,7 @@ import { AuthGuardService } from '../utils/auth-guard.service';
     LoginModule,
     DemoModule
   ],
-  providers: [ AuthGuardService ]
+  providers: [ ]
 })
+
 export class PagesModule { }

@@ -1,7 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { PagesComponent } from './pages.component';
-import { AuthGuardService } from '../utils/auth-guard.service';
+import { AuthGuard } from '../utils/auth-guard.service';
+import { AuthService } from '../utils/auth.service';
 
 
 /**
@@ -15,13 +16,29 @@ export const pagesRoutes: Routes = [
   {
     path: 'pages',
     component: PagesComponent,
-    //canActivate: [ AuthGuardService ],
+    canActivate: [ AuthGuard ],
     children: [
       { path: '', redirectTo: 'demo', pathMatch: 'full' },
       { path: 'demo', loadChildren: 'app/pages/demo/demo.module#DemoModule' },
-      { path: 'resource', loadChildren: 'app/pages/resource/resource.module#ResourceModule' }
+      { path: 'resource', loadChildren: 'app/pages/resource/resource.module#ResourceModule', canLoad: [AuthGuard] }
     ]
   }
 ];
 
-export const PagesRoute: ModuleWithProviders = RouterModule.forChild(pagesRoutes);
+@NgModule({
+  imports: [
+  RouterModule.forRoot(
+    pagesRoutes, {
+      enableTracing: true // <-- debugging purposes only
+    }
+  )],
+  exports: [ RouterModule ],
+  providers: [
+    AuthGuard,
+    AuthService
+  ]
+})
+
+export class PagesRoutingModule {
+
+}

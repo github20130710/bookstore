@@ -3,7 +3,7 @@ import { CanActivate, CanActivateChild, CanLoad, Router, Route, ActivatedRouteSn
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad {
+export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -22,6 +22,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
   }
 
   checkLogin(url:string): boolean {
+
     if (this.authService.isLoggedIn) { return true; }
 
     // Store the attempted URL for redirecting
@@ -29,6 +30,6 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
 
     // Navigate to the login page with extras
     this.router.navigate(['/login']);
-    return false;
+
   }
 }
