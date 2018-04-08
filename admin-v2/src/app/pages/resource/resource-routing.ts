@@ -1,7 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ResourceComponent } from './resource.component';
+import { AuthGuardService } from '../../utils/auth-guard.service';
 import { BooksComponent } from './books/books.component';
 
 /**
@@ -10,7 +10,7 @@ import { BooksComponent } from './books/books.component';
 const ResourceRoutes: Routes = [
   {
     path: '',
-    component: ResourceComponent,
+    // canActivateChild: [ AuthGuardService ],
     children: [
       { path: 'book', component: BooksComponent }
     ]

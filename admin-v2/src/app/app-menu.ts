@@ -18,13 +18,13 @@ export const MENUS = [
         order: 100,
         children: [
           {
-            path: 'pages/resource/book',
+            path: 'resource/book',
             title: '书籍'
           },{
-            path: 'pages/resource/category',
+            path: 'resource/category',
             title: '分类'
           },{
-            path: 'pages/resource/tag',
+            path: 'resource/tag',
             title: '标签'
           }
         ]

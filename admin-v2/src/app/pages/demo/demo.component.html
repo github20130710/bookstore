@@ -1,7 +1,14 @@
-<p>
-  demo works!
-</p>
-<h4>Dialog</h4>
 
-<h4>Grid</h4>
-<sw-ui-grid [columns]="columns" [options]="options" [dataSource]="ELEMENT_DATA" (selected)="onSelected($event)"></sw-ui-grid>
+<a [routerLink]="'./button'">Button</a>
+
+<a [routerLink]="'./layout'">Layout</a>
+
+<a [routerLink]="'./form'">Form</a>
+
+<a [routerLink]="'./dialog'">Dialog</a>
+
+<a [routerLink]="'./grid'">Grid</a>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

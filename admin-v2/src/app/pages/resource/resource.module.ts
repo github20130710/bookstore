@@ -9,7 +9,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ThemeModule } from '../../theme/theme.module';
 
 import { ResourceRoutingModule } from './resource-routing';
-import { ResourceComponent } from './resource.component';
 import { BooksComponent, BookCreateDialog } from './books/books.component';
 import { ConfirmDialog } from '../../utils/confirm-dialog';
 
@@ -20,7 +19,6 @@ import { ConfirmDialog } from '../../utils/confirm-dialog';
     ConfirmDialog
   ],
   declarations: [
-    ResourceComponent,
     BooksComponent,
     BookCreateDialog,
     ConfirmDialog

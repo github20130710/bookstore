@@ -6,8 +6,10 @@ import { PageNotFoundComponent } from './error-page/page-not-found.component';
  * app路由
  */
 export const appRoutes: Routes = [
-  { path: '', redirectTo: 'demo', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
-export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(appRoutes, { useHash: true });
+export const AppRoutingModule: ModuleWithProviders =
+  // RouterModule.forRoot(appRoutes, { enableTracing: true });  // <-- debugging purposes only
+  RouterModule.forRoot(appRoutes);

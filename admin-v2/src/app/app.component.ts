@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MENUS } from './app-menu';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,5 @@ import { MENUS } from './app-menu';
 export class AppComponent {
 
   constructor() { }
-
-  private menuItems = MENUS;
 
 }

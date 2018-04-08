@@ -1,14 +1,14 @@
 <div>
   <mat-toolbar layout="row" >
     <h1>Angular Material - Bookstore Admin</h1>
+    <div class="float: right;">
+      <a [routerLink]="'/login'">Login</a>
+    </div>
   </mat-toolbar>
-  <mat-drawer-container class="container">
-    <mat-drawer mode="side" opened mode="side">
-      <sw-ui-menu [menuItems]="menuItems"></sw-ui-menu>
-    </mat-drawer>
-    <!-- Main content -->
-    <mat-drawer-content>
-      <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
+  <router-outlet></router-outlet>
+  <div>
+    <p class="title">demo/button: 用outlet显示多重路由</p>
+    <p class="title">demo/grid: Activated Route 实战</p>
+    <p class="title">login, resource: 路由守卫CanActivate,守卫子路由CanActivateChild＋认证</p>
+  </div>
 </div>
