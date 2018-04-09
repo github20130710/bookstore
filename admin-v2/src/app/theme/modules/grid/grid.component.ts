@@ -14,7 +14,16 @@ export class GridComponent implements OnInit{
 
   constructor() { }
 
-  @Input()  dataSource:Array<any> = [];
+  private _dataSource: MatTableDataSource<any>;
+
+  @Input()
+  public set dataSource(values: MatTableDataSource<any>) {
+    this._dataSource = new MatTableDataSource<any>(values);
+  }
+  public get dataSource(): MatTableDataSource<any> {
+    return this._dataSource;
+  }
+
 
   @Output() selected = new EventEmitter();
 
@@ -35,7 +44,6 @@ export class GridComponent implements OnInit{
   };
   selection = new SelectionModel<any>(false, []);
   columnsToDisplay:Array<String> = [];   //待展示的列
-  rows:any;       //每页显示的数据
 
   @Input()
   public set columns(values:Array<any>) {
@@ -65,7 +73,6 @@ export class GridComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.rows = new MatTableDataSource(this.dataSource) || {};
     this.columnsToDisplay = this.columns.map(x => x.name);
     this.columnsToDisplay.unshift('select');
     if(this._options.multiSelect) {
@@ -81,21 +88,21 @@ export class GridComponent implements OnInit{
    * Set the paginator and sort after the view init .
    */
   ngAfterViewInit() {
-    this.rows.paginator = this.paginator;
-    this.rows.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.rows.data.length;
+    const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ? this.selection.clear() :
-      this.rows.data.forEach(row => this.selection.select(row));
+      this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
   onSelectRow(row){
@@ -122,7 +129,7 @@ export class GridComponent implements OnInit{
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.rows.filter = filterValue;
+    this.dataSource.filter = filterValue;
   }
 
 }

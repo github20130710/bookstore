@@ -35,7 +35,6 @@ exports.findById=function(req,res){
 exports.add = function(req, res) {
   var tag=req.body;
   TagDao.save(tag, (err) => {
-    console.log(err);
     if(err) {
       res.send('添加图书标签失败！');
     } else {
@@ -46,7 +45,11 @@ exports.add = function(req, res) {
 
 //删除图书标签
 exports.delete = function(req, res) {
-  var conditions=req.body;
+  let id = url.parse(req.url, true).search || "";
+  let arr = id.split('/');
+  if(arr.length > 0)  id = arr[arr.length-1];
+  if(id="")   res.send({msg: '参数id缺失!'});
+  var conditions={"id": id};
   CategoryDao.remove(conditions, (err) => {
     res.send(err);
   });

@@ -10,7 +10,7 @@ import { BooksComponent } from './books/books.component';
 const resourceRoutes: Routes = [
   {
     path: '',
-    canActivateChild: [ AuthGuard ],
+    //canActivateChild: [ AuthGuard ],
     children: [
       { path: 'book', component: BooksComponent }
     ]

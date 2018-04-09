@@ -6,8 +6,8 @@
   <div class="button-row">
     <button mat-raised-button (click)="refresh()">刷新</button>
     <button mat-raised-button (click)="create()">新增</button>
-    <button mat-raised-button (click)="edit()">修改</button>
-    <button mat-raised-button (click)="remove()">删除</button>
+    <button mat-raised-button (click)="edit()" *ngIf="current">修改</button>
+    <button mat-raised-button (click)="remove()" *ngIf="current">删除</button>
   </div>
 
   <sw-ui-grid [columns]="columns" [dataSource]="books" (selected)="onSelected($event)"></sw-ui-grid>

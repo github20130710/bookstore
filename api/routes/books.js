@@ -35,18 +35,21 @@ exports.findById=function(req,res){
 exports.add = function(req, res) {
   var book=req.body;
   BookDao.save(book, (err) => {
-    console.log(err);
     if(err) {
-      res.send('添加图书失败！');
+      res.send({msg: '添加图书失败！'});
     } else {
-      res.send('添加图书成功！');
+      res.send({msg: '添加图书成功！'});
     }
   });
 };
 
 //删除图书
 exports.delete = function(req, res) {
-  var conditions=req.body;
+  let id = url.parse(req.url, true).search || "";
+  let arr = id.split('/');
+  if(arr.length > 0)  id = arr[arr.length-1];
+  if(id="")   res.send({msg: '参数id缺失!'});
+  var conditions={"id": id};
   BookDao.remove(conditions, (err) => {
     res.send(err);
   });

@@ -19,7 +19,7 @@ export const pagesRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'demo', pathMatch: 'full' },
       { path: 'demo', loadChildren: 'app/pages/demo/demo.module#DemoModule' },
-      { path: 'resource', loadChildren: 'app/pages/resource/resource.module#ResourceModule', canLoad: [AuthGuard] }
+      { path: 'resource', loadChildren: 'app/pages/resource/resource.module#ResourceModule'}
     ]
   }
 ];

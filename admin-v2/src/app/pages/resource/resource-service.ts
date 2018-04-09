@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-//import { RequestOptions } from '@angular/common/http';
 
 /**
  * resource 服务
@@ -27,13 +26,12 @@ export class ResourceService {
   }
 
   editBook(condition, params):any {
-    let body = {condition, params};
+    let body = {conditions: condition, entity:params};
     return this.httpClient.put(this.url+'/books/book', body);
   }
 
-  deleteBookById(params):any {
-    //this.defaultOptions = new RequestOptions({body : params});
-    //return this.httpClient.delete(this.url+'/books/book', this.defaultOptions);
+  deleteBookById(id):any {
+    return this.httpClient.delete(this.url+'/books/book/'+id, {});
   }
 
   /********************************
