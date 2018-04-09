@@ -2,7 +2,6 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from '../../utils/auth-guard.service';
-import { AuthService } from '../../utils/auth.service';
 import { BooksComponent } from './books/books.component';
 
 /**
@@ -19,12 +18,8 @@ const resourceRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(resourceRoutes) ],
-  exports: [ RouterModule ],
-  providers: [
-    AuthGuard,
-    AuthService
-  ]
+  imports: [ RouterModule.forChild(resourceRoutes) ],
+  exports: [ RouterModule ]
 })
 
 export class ResourceRoutingModule {

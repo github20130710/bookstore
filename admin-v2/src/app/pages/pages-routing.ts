@@ -16,7 +16,6 @@ export const pagesRoutes: Routes = [
   {
     path: 'pages',
     component: PagesComponent,
-    canActivate: [ AuthGuard ],
     children: [
       { path: '', redirectTo: 'demo', pathMatch: 'full' },
       { path: 'demo', loadChildren: 'app/pages/demo/demo.module#DemoModule' },
