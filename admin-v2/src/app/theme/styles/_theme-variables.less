@@ -1,12 +1,17 @@
+/**
+ * c: color
+ * f: font
+ * m: margin
+ * p: padding
+ **/
 @c-bg: #1190d6;
-@c-bg-light: lighten(@c-bg, 25%);
-@c-light: #e5e5e6;
-@c-success: #5cb85c;
-@c-info: #5bc0de;
-@c-danger: #d9534f;
+@c-base: #46bbe6;
+@c-success: mix(#5cb85c, @c-base, 10%);
+@c-info: mix(#5bc0de, @c-base);
+@c-danger: mix(#d9534f, @c-base);
 @c-default: #fff;
-@c-warning: #f0ad4e;
-@c-primary: #337ab7;
+@c-warning: mix(#f0ad4e, @c-base);
+@c-primary: mix(#337ab7, @c-base);
 @c-text: #fff;
 @c-text-muted: lighten(@c-text, 25%);
 @c-link: darken(@c-text, 15%);
@@ -18,6 +23,14 @@
 @f-size-default: 12px;
 @f-size-lg: 14px;
 @f-size-sm: 10px;
+
+
+@m-sm: 5px;
+@m-md: 10px;
+@m-lg: 15px;
+@p-sm: 3px;
+@p-md: 6px;
+@p-lg: 10px;
 
 @line-height-base: 1.428;
 @header-height: 50px;

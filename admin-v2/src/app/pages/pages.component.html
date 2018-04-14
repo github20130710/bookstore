@@ -1,9 +1,14 @@
 <mat-drawer-container class="container sw-main">
-  <mat-drawer mode="side" opened mode="side">
-    <sw-ui-menu [menuItems]="menuItems"></sw-ui-menu>
+  <mat-drawer mode="side" opened mode="side" class="navigate">
+    <sw-ui-menu class="menu" [menuItems]="menuItems"></sw-ui-menu>
   </mat-drawer>
   <!-- Main content -->
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>
+  <div class="footer">
+    <p class="title">demo/button: 用outlet显示多重路由</p>
+    <p class="title">demo/grid: Activated Route 实战</p>
+    <p class="title">login, resource: 路由守卫CanActivate,守卫子路由CanActivateChild＋认证</p>
+  </div>
 </mat-drawer-container>

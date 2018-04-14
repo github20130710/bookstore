@@ -1,14 +1,7 @@
-<div>
-  <mat-toolbar layout="row" >
-    <h1>Angular Material - Bookstore Admin</h1>
-    <div class="float: right;">
-      <a [routerLink]="'/login'">Login</a>
-    </div>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
-  <div>
-    <p class="title">demo/button: 用outlet显示多重路由</p>
-    <p class="title">demo/grid: Activated Route 实战</p>
-    <p class="title">login, resource: 路由守卫CanActivate,守卫子路由CanActivateChild＋认证</p>
+<mat-toolbar layout="row" class="header">
+  <h1>Angular Material - Bookstore Admin</h1>
+  <div class="header-tool">
+    <a [routerLink]="'/login'">Login</a>
   </div>
-</div>
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { MatToolbarModule } from '@angular/material';
 
@@ -24,6 +24,7 @@ import { PageNotFoundComponent } from './error-page/page-not-found.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule,
     AppRoutingModule,
     MatToolbarModule,
     ThemeModule,
@@ -37,8 +38,4 @@ import { PageNotFoundComponent } from './error-page/page-not-found.component';
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
-  // Diagnostic only: inspect router configuration
-  // constructor(router: Router) {
-    // console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
-  // }
 }

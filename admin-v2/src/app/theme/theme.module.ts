@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 
 import { GridModule, MenuModule } from './modules/index';
 
+import 'style-loader!./styles/index.less';
+
 const THEME_MODULES = [
   GridModule, MenuModule
-]
+];
 
 @NgModule({
   declarations: [
