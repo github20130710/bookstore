@@ -14,13 +14,13 @@ export class GridComponent implements OnInit{
 
   constructor() { }
 
-  private _dataSource: MatTableDataSource<any>;
+  private _dataSource: MatTableDataSource<Object>;
 
   @Input()
-  public set dataSource(values: MatTableDataSource<any>) {
-    this._dataSource = new MatTableDataSource<any>(values);
+  public set dataSource(values:MatTableDataSource<Object>) {
+    this._dataSource = values;
   }
-  public get dataSource(): MatTableDataSource<any> {
+  public get dataSource(): MatTableDataSource<Object> {
     return this._dataSource;
   }
 
