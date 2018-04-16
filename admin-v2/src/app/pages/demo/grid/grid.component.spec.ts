@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Router } from '@angular/router';
+import { ThemeModule } from '../../../theme/theme.module';
 import { GridComponent } from './grid.component';
 
 describe('GridComponent', () => {
@@ -8,6 +9,7 @@ describe('GridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ Router, ThemeModule ],
       declarations: [ GridComponent ]
     })
     .compileComponents();
